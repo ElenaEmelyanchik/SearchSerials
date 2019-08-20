@@ -23,6 +23,11 @@ allprojects {
     }
 }
 
+ext{
+    lifecycle_version = '2.0.0-beta01'
+    dagger2 = '2.17'
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
