@@ -6,4 +6,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [ContextModule::class, NetworkModule::class])
 interface AppComponent {
+
+    fun inject(activity: MainActivity)
 }
