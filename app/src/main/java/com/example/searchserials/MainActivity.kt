@@ -11,12 +11,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import javax.inject.Inject
 import kotlinx.android.synthetic.main.activity_main.my_recycler_view as recyclerView
 
 class MainActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var viewModelFactory: SearchViewModelFactory
+
     val viewModel: SearchViewModel by lazy {
-        ViewModelProviders.of(this).get(SearchViewModel::class.java)
+        ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         val viewManager = LinearLayoutManager(this)
         val viewAdapter = MyItemRecyclerViewAdapter(object:ItemFragment.OnListFragmentInteractionListener{
             override fun onListFragmentInteraction(item: Serial?) {
+                Log.d(this.javaClass.name, item?.name)
             }
         })
 

@@ -7,5 +7,6 @@ import javax.inject.Singleton
 @Component(modules = [ContextModule::class, NetworkModule::class])
 interface AppComponent {
 
+    fun repository(): Repository
     fun inject(activity: MainActivity)
 }

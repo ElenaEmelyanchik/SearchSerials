@@ -1,13 +1,18 @@
 package com.example.searchserials
 
 
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.searchserials.ItemFragment.OnListFragmentInteractionListener
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_item.view.*
+import java.net.URL
+
 
 class MyItemRecyclerViewAdapter(
     private val listener: OnListFragmentInteractionListener?
@@ -36,7 +41,9 @@ class MyItemRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.title
+        holder.name.text = item.name
+        holder.genres.text = item.genres?.joinToString(",")
+        item.image?.let { Picasso.get().load(it).into(holder.image); }
 
         with(holder.view) {
             tag = item
@@ -47,11 +54,12 @@ class MyItemRecyclerViewAdapter(
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val idView: TextView = view.item_number
-        val contentView: TextView = view.content
+        val name: TextView = view.name
+        val genres: TextView = view.genres
+        val image: ImageView = view.image
 
         override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+            return super.toString() + " '" + genres.text + "'"
         }
     }
 }
