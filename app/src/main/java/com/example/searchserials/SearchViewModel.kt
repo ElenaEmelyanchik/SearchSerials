@@ -6,14 +6,14 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
 class SearchViewModel(val repository: Repository) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
     private val listSerials = MutableLiveData<ArrayList<Serial>>()
 
     fun search(newText: String) {
-        compositeDisposable.add(repository.searchSerials(newText).subscribeOn(Schedulers.io())
+        compositeDisposable.add(
+            SearchSerialUseCase(repository, newText).execute().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe(
                 {
                     listSerials.value = it

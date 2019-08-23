@@ -20,18 +20,12 @@ class NetworkModule {
     @Provides
     @Singleton
     @LoggingInterceptor
-    fun provideLoggingInterceptor(loginInterceptorLevel: HttpLoggingInterceptor.Level): Interceptor {
+    fun provideLoggingInterceptor(): Interceptor {
         val loggingInterceptor = HttpLoggingInterceptor { message ->
             Platform.get().log(INFO, message, null)
         }
-        loggingInterceptor.setLevel(loginInterceptorLevel)
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return loggingInterceptor
-    }
-
-    @Provides
-    @Singleton
-    internal fun provideLoggingLevel(): HttpLoggingInterceptor.Level {
-        return HttpLoggingInterceptor.Level.BODY
     }
 
     @Provides

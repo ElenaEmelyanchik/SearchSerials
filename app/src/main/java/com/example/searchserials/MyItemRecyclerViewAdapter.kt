@@ -1,7 +1,6 @@
 package com.example.searchserials
 
 
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.searchserials.ItemFragment.OnListFragmentInteractionListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_item.view.*
-import java.net.URL
 
 
 class MyItemRecyclerViewAdapter(

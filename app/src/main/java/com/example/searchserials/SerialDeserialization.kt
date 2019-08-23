@@ -12,15 +12,9 @@ class SerialDeserialization : JsonDeserializer<Serial> {
         val jsonObject = json?.getAsJsonObjectOrNull()
         val showJsonObject = jsonObject?.get("show")?.getAsJsonObjectOrNull()
         val title = showJsonObject?.get("name")?.asString
-
         val genres = showJsonObject?.get("genres")?.asJsonArray?.map { jsonElement -> jsonElement.asString  }
         val imagesJsonObject = showJsonObject?.get("image")?.getAsJsonObjectOrNull()
         val image = imagesJsonObject?.get("medium")?.asString
         return Serial(title, genres, image)
-    }
-
-    fun JsonElement.getAsJsonObjectOrNull():JsonObject? = run{
-        if(this.isJsonNull)  return null
-         return this.asJsonObject
     }
 }

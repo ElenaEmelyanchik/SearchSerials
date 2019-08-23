@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         val viewAdapter = MyItemRecyclerViewAdapter(object:ItemFragment.OnListFragmentInteractionListener{
             override fun onListFragmentInteraction(item: Serial?) {
                 Log.d(this.javaClass.name, item?.name)
+                launchActivity<VideoActivity>()
             }
         })
 
