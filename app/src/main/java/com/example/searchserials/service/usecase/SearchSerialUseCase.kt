@@ -1,5 +1,7 @@
-package com.example.searchserials
+package com.example.searchserials.service.usecase
 
+import com.example.searchserials.service.model.Serial
+import com.example.searchserials.service.repository.Repository
 import io.reactivex.Single
 
 class SearchSerialUseCase(override var repository: Repository, val query: String): BaseSingleUsecase<ArrayList<Serial>>() {

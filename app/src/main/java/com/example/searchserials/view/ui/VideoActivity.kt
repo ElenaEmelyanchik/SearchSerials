@@ -1,9 +1,12 @@
-package com.example.searchserials
+package com.example.searchserials.view.ui
 
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.searchserials.App
+import com.example.searchserials.R
+import com.example.searchserials.utils.URL_VIDEO
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
 import com.google.android.exoplayer2.source.ExtractorMediaSource
@@ -22,7 +25,7 @@ class VideoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_video)
         (application as App).component().inject(this)
         video.player = exoPlayer
-        play("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
+        play(URL_VIDEO)
     }
 
 

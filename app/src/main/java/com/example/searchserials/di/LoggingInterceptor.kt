@@ -1,4 +1,4 @@
-package com.example.searchserials
+package com.example.searchserials.di
 
 import javax.inject.Qualifier
 

@@ -1,5 +1,6 @@
-package com.example.searchserials
+package com.example.searchserials.service.usecase
 
+import com.example.searchserials.service.repository.Repository
 import io.reactivex.Single
 
 abstract class BaseSingleUsecase<T> {

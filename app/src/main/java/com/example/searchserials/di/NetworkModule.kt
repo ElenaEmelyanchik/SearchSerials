@@ -1,5 +1,11 @@
-package com.example.searchserials
+package com.example.searchserials.di
 
+import com.example.searchserials.service.SerialDeserialization
+import com.example.searchserials.service.model.Serial
+import com.example.searchserials.service.repository.ApiRestRepository
+import com.example.searchserials.service.repository.Repository
+import com.example.searchserials.service.repository.TVMazeApi
+import com.example.searchserials.utils.URL_API
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -32,7 +38,7 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(client: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://api.tvmaze.com ")
+            .baseUrl(URL_API)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)

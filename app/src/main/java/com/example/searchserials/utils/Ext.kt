@@ -1,4 +1,4 @@
-package com.example.searchserials
+package com.example.searchserials.utils
 
 import android.app.Activity
 import android.content.Intent

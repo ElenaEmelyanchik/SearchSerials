@@ -1,16 +1,22 @@
-package com.example.searchserials
+package com.example.searchserials.view.ui
 
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.searchserials.App
+import com.example.searchserials.R
+import com.example.searchserials.service.model.Serial
+import com.example.searchserials.utils.launchActivity
+import com.example.searchserials.view.adapter.MyItemRecyclerViewAdapter
+import com.example.searchserials.viewmodel.SearchViewModel
+import com.example.searchserials.viewmodel.SearchViewModelFactory
 import javax.inject.Inject
 import kotlinx.android.synthetic.main.activity_main.my_recycler_view as recyclerView
 
@@ -20,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModelFactory: SearchViewModelFactory
 
     val viewModel: SearchViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(SearchViewModel::class.java)
+        ViewModelProvider(this, viewModelFactory).get(SearchViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         (application as App).component().inject(this)
 
         val viewManager = LinearLayoutManager(this)
-        val viewAdapter = MyItemRecyclerViewAdapter(object:ItemFragment.OnListFragmentInteractionListener{
+        val viewAdapter = MyItemRecyclerViewAdapter(object :
+            ItemFragment.OnListFragmentInteractionListener {
             override fun onListFragmentInteraction(item: Serial?) {
-                Log.d(this.javaClass.name, item?.name)
                 launchActivity<VideoActivity>()
             }
         })
@@ -62,14 +68,18 @@ class MainActivity : AppCompatActivity() {
                 override fun onQueryTextChange(newText: String?): Boolean {
                     newText?.apply {
                         if(length > 2){
-                            viewModel.search(newText)
+                            viewModel.search(this)
                         }
                     }
                     return true
                 }
 
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    Log.d(this.javaClass.canonicalName, query)
+                    query?.apply {
+                        if (length > 2) {
+                            viewModel.search(this)
+                        }
+                    }
                     return true
                 }
             })

@@ -1,5 +1,8 @@
-package com.example.searchserials
+package com.example.searchserials.di
 
+import com.example.searchserials.service.repository.Repository
+import com.example.searchserials.view.ui.MainActivity
+import com.example.searchserials.view.ui.VideoActivity
 import dagger.Component
 import javax.inject.Singleton
 

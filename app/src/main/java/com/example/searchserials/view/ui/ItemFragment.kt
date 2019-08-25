@@ -1,4 +1,4 @@
-package com.example.searchserials
+package com.example.searchserials.view.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.searchserials.R
+import com.example.searchserials.service.model.Serial
+import com.example.searchserials.view.adapter.MyItemRecyclerViewAdapter
 
 class ItemFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.example.searchserials
+package com.example.searchserials.view.adapter
 
 
 import android.view.LayoutInflater
@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.searchserials.ItemFragment.OnListFragmentInteractionListener
+import com.example.searchserials.R
+import com.example.searchserials.service.model.Serial
+import com.example.searchserials.view.ui.ItemFragment.OnListFragmentInteractionListener
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_item.view.*
 

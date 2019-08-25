@@ -1,9 +1,10 @@
-package com.example.searchserials
+package com.example.searchserials.service
 
+import com.example.searchserials.service.model.Serial
+import com.example.searchserials.utils.getAsJsonObjectOrNull
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
-import com.google.gson.JsonObject
 import java.lang.reflect.Type
 
 

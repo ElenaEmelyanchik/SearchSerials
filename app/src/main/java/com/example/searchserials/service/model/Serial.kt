@@ -1,4 +1,4 @@
-package com.example.searchserials
+package com.example.searchserials.service.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
